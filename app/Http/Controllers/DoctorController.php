@@ -41,9 +41,7 @@ class DoctorController extends Controller
     public function updateDoctor(Request $request)
     {
 
-        $id = $request->id;
-
-        User::find($id)->update([
+        User::whereId($request->id)->update([
             'id'      => $request->id,
             'user_name' => $request->user_name,
             'name'  => $request->name,
@@ -90,6 +88,7 @@ class DoctorController extends Controller
             'attendancetime'  => $request->attendancetime,
             'departuretime'   => $request->departuretime,
             'doctor_id'      => $request->doctor_id,
+            'date_formatting' => "Date ".$request->dateofwork." From ".$request->attendancetime." To ".$request->departuretime."In Day ".$request->day,
         ]);
 
         $notification = array(
@@ -122,7 +121,8 @@ class DoctorController extends Controller
         return redirect()->route('get.appointments')->with($notification);
     }
 
-    public function Delete($id){
+    public function Delete($id)
+    {
 
         Appointment::where('id', $id)->delete();
 
@@ -132,5 +132,13 @@ class DoctorController extends Controller
         );
 
         return redirect()->route('get.appointments')->with($notification);
+    }
+
+    ///get Doctor Data.
+
+    public function getdoctorData($id)
+    {
+        $appointment = Appointment::where('doctor_id', $id)->get();
+        return json_encode($appointment);
     }
 }

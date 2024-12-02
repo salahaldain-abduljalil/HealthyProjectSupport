@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('doctor_id');
             $table->string('day');
+            $$table->tinyText('date_formatting');
             $table->date('dateofwork');
             $table->time('attendancetime');
             $table->time('departuretime');

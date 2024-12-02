@@ -84,6 +84,22 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#reservations">
+                        <i class="fas fa-layer-group"></i>
+                        <p>جميع حجوزات الطالب</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="reservations">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('get.reservations') }}">
+                                    <span class="sub-item"> كل حجوزاتك </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

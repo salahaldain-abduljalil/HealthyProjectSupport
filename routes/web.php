@@ -3,8 +3,10 @@
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EntryConttroller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -52,6 +54,12 @@ Route::get('all/appointments',[DoctorController::class, 'get'])->name('get.appoi
 Route::post('create/appointments',[DoctorController::class, 'create'])->name('create.appointment');
 Route::post('update/appointments',[DoctorController::class, 'update'])->name('update.appointment');
 Route::get('delete/appointment/{id}',[DoctorController::class, 'Delete'])->name('delete.appointment');
+Route::get('getdoctor/data/{id}',[DoctorController::class, 'getdoctorData']);
+
+//Reservation student Routes.
+
+Route::get('allstudent/reservation',[StudentController::class,'get'])->name('get.reservations');
+Route::post('studentcreate/reservation',[StudentController::class,'Create'])->name('create.reservation');
 
 
 

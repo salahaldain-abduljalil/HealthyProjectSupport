@@ -95,12 +95,12 @@
          $(document).ready(function() {
              $('#myForm').validate({
                  rules: {
-                     'counts[]': {
+                     'counts': {
                          required: true,
                      },
                  },
                  messages: {
-                     'counts[]': {
+                     'counts': {
                          required: 'هذا الحقل مطلوب للإدخال',
                      },
                  },

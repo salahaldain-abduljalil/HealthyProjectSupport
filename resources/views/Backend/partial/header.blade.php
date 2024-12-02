@@ -150,81 +150,64 @@
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-info-gradient">
                 <h5 class="modal-title" id="exampleModalLongTitle">قم بحجز موعد مع الطبيب هنا</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="bg-danger text-dark"> &times;</span>
                 </button>
             </div>
             <div class="modal-body" style="direction: rtl;">
-                <form id="studentappointmentForm" action="#" method="post" enctype="multipart/form-data">
+                <form id="studentappointmentForm" action="{{ route('create.reservation') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
 
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">أدخل إسمك</label>
-                            <input type="text" name="patient_name" class="form-control" id="input1">
+                            <input type="text" name="name" class="form-control" id="input1">
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="weekdays" class="form-label">كل الأطباء</label>
-                            <select id="weekdays" name="doctor_name" class="form-control" required>
-                                <option selected="" disabled>إختار طبيب متاح للموعد
-                                </option>
-                                @foreach ($doctors as $doctor)
-                                    <option value="{{ $doctor->user_name }} {{ $doctor->name }}">
-                                        {{ $doctor->user_name }} {{ $doctor->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="weekdays" class="form-label">كل الأوقات المتاحة للطبيب</label>
-                            <select id="weekdays" name="doctor_name" class="form-control" required>
-                                <option selected="" disabled> إختار الوقت
-                                </option>
-                                @foreach ($doctors as $doctor)
-                                    <option value="{{ $doctor->user_name }} {{ $doctor->name }}">
-                                        {{ $doctor->user_name }} {{ $doctor->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="weekdays" class="form-label">كل الأيام المتاحة للطبيب</label>
-                            <select id="weekdays" name="doctor_name" class="form-control" required>
-                                <option selected="" disabled> إختار اليوم
-                                </option>
-                                @foreach ($doctors as $doctor)
-                                    <option value="{{ $doctor->user_name }} {{ $doctor->name }}">
-                                        {{ $doctor->user_name }} {{ $doctor->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="weekdays" class="form-label">كل الأطباء</label>
-                            <select id="weekdays" name="doctor_name" class="form-control" required>
-                                <option selected="" disabled>إختار طبيب متاح للموعد
-                                </option>
-                                @foreach ($doctors as $doctor)
-                                    <option value="{{ $doctor->user_name }} {{ $doctor->name }}">
-                                        {{ $doctor->user_name }} {{ $doctor->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">البريد الإلكتروني </label>
                             <input type="email" name="email" class="form-control" id="input1">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="input1" class="form-label">رقم الهاتف</label>
-                            <input type="text" name="phone" class="form-control" id="input1">
+                            <label for="number" class="form-label">رقم الهاتف</label>
+                            <input type="tel" name="phone" class="form-control" id="number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">العنوان</label>
                             <input type="text" name="address" class="form-control" id="input1">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
+                            <label for="weekdays" class="form-label">كل الأطباء المتاحين</label>
+                            <select id="weekdays" name="doctor_name" class="form-control" required>
+                                <option selected="" disabled>إختار طبيب متاح للموعد
+                                </option>
+                                @foreach ($doctors as $doctor)
+                                    <option value="{{ $doctor->id }}">
+                                        {{ $doctor->user_name }} {{ $doctor->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @php
+                            $appointments = \App\Models\Appointment::get();
+                        @endphp
+                        <div class="form-group col-md-12">
+                            <label for="weekdays" class="form-label">كل الأوقات المتاحة للطبيب</label>
+                            <select id="weekdays" name="doctor_date" class="form-control" required>
+                                <option selected="" disabled> إختار الوقت ليتم الحجز
+                                </option>
+                                {{-- @foreach ($appointments as $appointment)
+                                    <option value="{{ $appointment->date_formatting }}">
+                                    </option>
+                                @endforeach --}}
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
                             <label for="editor" class="form-label">أدخل وصف حالتك للطبيب</label>
                             <textarea id="editor" class="form-control" name="description" placeholder="......يرجى إدخال الوصف هنا"></textarea>
                         </div>
@@ -239,13 +222,36 @@
                         <button type="submit" class="btn btn-primary">جفظ التغيرات</button>
                     </div>
                 </form>
-
             </div>
-
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="doctor_name"]').on('change', function() {
+            var doctor_name = $(this).val();
+            if (doctor_name) {
+                $.ajax({
+                    url: "{{ url('/getdoctor/data') }}/" + doctor_name,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="doctor_date"]').html('');
+                        var d = $('select[name="doctor_date"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="doctor_date"]').append(
+                                '<option value="' + value.date_formatting + '">' + value
+                                .date_formatting + '</option>');
+                        });
+                    },
+                });
 
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>
 <script>
     function markNotificationRead(notificationId) {
         fetch('/mark-notification-as-read/' + notificationId, {
@@ -276,6 +282,9 @@
                 doctor_name: {
                     required: true,
                 },
+                doctor_date: {
+                    required: true,
+                },
                 email: {
                     required: true,
                 },
@@ -294,6 +303,9 @@
                     required: 'هذا الحقل مطلوب للإدخال',
                 },
                 doctor_name: {
+                    required: 'هذا الحقل مطلوب للإدخال',
+                },
+                doctor_date: {
                     required: 'هذا الحقل مطلوب للإدخال',
                 },
                 email: {
@@ -329,4 +341,12 @@
         const sound = new Audio(`/default/message-sound.mp3`);
         sound.play();
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#number").intlTelInput({
+            // خيارات إعداد إضافية يمكن إضافتها هنا
+        });
+    });
 </script>
