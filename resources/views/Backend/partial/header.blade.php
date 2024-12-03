@@ -240,7 +240,8 @@
                         var d = $('select[name="doctor_date"]').empty();
                         $.each(data, function(key, value) {
                             $('select[name="doctor_date"]').append(
-                                '<option value="' + value.date_formatting + '">' + value
+                                '<option value="' + value.date_formatting +
+                                '">' + value
                                 .date_formatting + '</option>');
                         });
                     },

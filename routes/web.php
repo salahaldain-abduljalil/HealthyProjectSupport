@@ -60,6 +60,8 @@ Route::get('getdoctor/data/{id}',[DoctorController::class, 'getdoctorData']);
 
 Route::get('allstudent/reservation',[StudentController::class,'get'])->name('get.reservations');
 Route::post('studentcreate/reservation',[StudentController::class,'Create'])->name('create.reservation');
+Route::post('studentupdate/reservation',[StudentController::class,'Update'])->name('update.reservation');
+Route::get('studentdelete/reservation/{id}',[StudentController::class,'Delete'])->name('delete.reservation');
 
 
 
