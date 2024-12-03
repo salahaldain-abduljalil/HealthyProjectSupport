@@ -24,45 +24,50 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/survey',[EntryConttroller::class, 'create']);
-Route::post('/survey/store',[EntryConttroller::class, 'store'])->name('entries.store');
+Route::get('/survey', [EntryConttroller::class, 'create']);
+Route::post('/survey/store', [EntryConttroller::class, 'store'])->name('entries.store');
 
 //survey Routes.
-Route::get('get/survey',[SurveyController::class,'get'])->name('get.survey');
-Route::get('create/survey',[SurveyController::class,'create'])->name('create.survey');
-Route::post('store/survey',[SurveyController::class,'store'])->name('store.survey');
-Route::post('update/survey',[SurveyController::class,'update'])->name('update.survey');
+Route::get('get/survey', [SurveyController::class, 'get'])->name('get.survey');
+Route::get('create/survey', [SurveyController::class, 'create'])->name('create.survey');
+Route::post('store/survey', [SurveyController::class, 'store'])->name('store.survey');
+Route::post('update/survey', [SurveyController::class, 'update'])->name('update.survey');
 
 
 ///Entry Routes.
-Route::post('post/entry',[SurveyController::class,'storeEntry'])->name('store.entry');
-Route::get('delete/question/{id}',[SurveyController::class,'DeleteQuestion'])->name('delete.question');
+Route::post('post/entry', [SurveyController::class, 'storeEntry'])->name('store.entry');
+Route::get('delete/question/{id}', [SurveyController::class, 'DeleteQuestion'])->name('delete.question');
 
 Route::post('/mark-notification-as-read/{notification}', [SurveyController::class, 'MarkAsRead']);
 
 
 //Doctors Routes.
-Route::get('all/doctors',[DoctorController::class,'AllDoctor'])->name('all.doctors');
-Route::post('create/doctor',[DoctorController::class,'createDoctor'])->name('create.doctor');
-Route::post('update/doctor',[DoctorController::class,'updateDoctor'])->name('update.doctor');
-Route::get('delete/doctor/{id}',[DoctorController::class,'deleteDoctor'])->name('delete.doctor');
+Route::get('all/doctors', [DoctorController::class, 'AllDoctor'])->name('all.doctors');
+Route::post('create/doctor', [DoctorController::class, 'createDoctor'])->name('create.doctor');
+Route::post('update/doctor', [DoctorController::class, 'updateDoctor'])->name('update.doctor');
+Route::get('delete/doctor/{id}', [DoctorController::class, 'deleteDoctor'])->name('delete.doctor');
 
 
 //appointments Routes.
 
-Route::get('all/appointments',[DoctorController::class, 'get'])->name('get.appointments');
-Route::post('create/appointments',[DoctorController::class, 'create'])->name('create.appointment');
-Route::post('update/appointments',[DoctorController::class, 'update'])->name('update.appointment');
-Route::get('delete/appointment/{id}',[DoctorController::class, 'Delete'])->name('delete.appointment');
-Route::get('getdoctor/data/{id}',[DoctorController::class, 'getdoctorData']);
+Route::get('all/appointments', [DoctorController::class, 'get'])->name('get.appointments');
+Route::post('create/appointments', [DoctorController::class, 'create'])->name('create.appointment');
+Route::post('update/appointments', [DoctorController::class, 'update'])->name('update.appointment');
+Route::get('delete/appointment/{id}', [DoctorController::class, 'Delete'])->name('delete.appointment');
+Route::get('getdoctor/data/{id}', [DoctorController::class, 'getdoctorData']);
+
+Route::get('allstudent/reservationsappointment', [DoctorController::class, 'AllreservedAppointment'])->name('get.reservationsappointment');
+Route::get('confirm/reservationappointment/{id}', [DoctorController::class, 'ConfirmreservedAppointment'])->name('confirm.reservationsappointment');
+Route::get('cancel/reservationappointment/{id}', [DoctorController::class, 'CancelreservedAppointment'])->name('cancel.reservationsappointment');
+
 
 //Reservation student Routes.
 
-Route::get('allstudent/reservation',[StudentController::class,'get'])->name('get.reservations');
-Route::post('studentcreate/reservation',[StudentController::class,'Create'])->name('create.reservation');
-Route::post('studentupdate/reservation',[StudentController::class,'Update'])->name('update.reservation');
-Route::get('studentdelete/reservation/{id}',[StudentController::class,'Delete'])->name('delete.reservation');
+Route::get('allstudent/reservation', [StudentController::class, 'get'])->name('get.reservations');
+Route::post('studentcreate/reservation', [StudentController::class, 'Create'])->name('create.reservation');
+Route::post('studentupdate/reservation', [StudentController::class, 'Update'])->name('update.reservation');
+Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'])->name('delete.reservation');
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

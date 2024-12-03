@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Sudentreservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +104,6 @@ class DoctorController extends Controller
     {
 
         Appointment::whereId($request->id)->update([
-
             'id' => $request->id,
             'dateofwork' => $request->dateofwork,
             'day'  => $request->day,
@@ -140,5 +140,36 @@ class DoctorController extends Controller
     {
         $appointment = Appointment::where('doctor_id', $id)->get();
         return json_encode($appointment);
+    }
+
+    public function AllreservedAppointment(){
+
+        $allappointmentsreserved = Sudentreservation::where('doctor_id',Auth::user()->id)->get();
+        return view('Doctors.allappointmentsreserved',compact('allappointmentsreserved'));
+    }
+
+    public function ConfirmreservedAppointment($reserv_id){
+        
+        Sudentreservation::find($reserv_id)->update(['status' => '1']);
+
+        $notification = array(
+            'message' => 'تم تأكيد الحجز بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('get.reservationsappointment')->with($notification);
+
+    }
+
+    public function CancelreservedAppointment($cancel_id){
+
+        Sudentreservation::find($cancel_id)->delete();
+
+        $notification = array(
+            'message' => 'تم إلغاء الحجز وحذفه بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('get.reservationsappointment')->with($notification);
     }
 }

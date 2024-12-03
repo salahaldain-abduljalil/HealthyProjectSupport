@@ -78,7 +78,7 @@
 
                Swal.fire({
                    title: "هل أنت متاكد؟",
-                   text: "التأكيد على عملية الحذف؟",
+                   text: "التأكيد على عملية الحجز؟",
                    icon: "warning",
                    showCancelButton: true,
                    confirmButtonColor: "#3085d6",
@@ -87,7 +87,7 @@
                }).then((result) => {
                    if (result.isConfirmed) {
                        window.location.href = link;
-                       Swal.fire("التأكيد!", ".تم حذف البيانات بنجاح", "success");
+                       Swal.fire("التأكيد!", ".تم تأكيد الحجز بنجاح", "success");
                    }
                });
            });
@@ -159,5 +159,3 @@
            theme: 'snow'
        });
    </script>
-
-

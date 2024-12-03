@@ -100,6 +100,22 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#reservationsappointment">
+                        <i class="fas fa-layer-group"></i>
+                        <p>جميع المواعيد المحجوزة</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="reservationsappointment">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('get.reservationsappointment') }}">
+                                    <span class="sub-item"> كل مواعيدك المحجوزة </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

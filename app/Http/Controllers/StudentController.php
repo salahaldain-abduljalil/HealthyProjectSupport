@@ -28,6 +28,7 @@ class StudentController extends Controller {
             'address'  => $request->address,
             'phone'   => $request->phone,
             'doctor_name'      => $user->name,
+            'doctor_id'      => $user->id,
             'doctor_date'      => $request->doctor_date,
             'user_id'      => $request->user_id,
             'user_name'      => $request->user_name,

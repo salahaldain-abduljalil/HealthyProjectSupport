@@ -23,9 +23,10 @@
                                 <tr>
                                     <th>N</th>
                                     <th class="text-center"> إسم الطبيب</th>
-                                    <th>تاريخ الحجز</th>
+                                    <th class="text-center">تاريخ الحجز</th>
                                     <th class="text-center"> تاريخ إنشاء الحجز</th>
                                     <th class="text-center">العنوان</th>
+                                    <th class="text-center">الحالة</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
                             </thead>
@@ -33,9 +34,10 @@
                                 <tr>
                                     <th>N</th>
                                     <th class="text-center"> إسم الطبيب</th>
-                                    <th>تاريخ الحجز</th>
+                                    <th class="text-center">تاريخ الحجز</th>
                                     <th class="text-center"> تاريخ إنشاء الحجز</th>
                                     <th class="text-center">العنوان</th>
+                                    <th class="text-center">الحالة</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
                             </tfoot>
@@ -47,6 +49,13 @@
                                         <td>{{ $reservation->doctor_date }}</td>
                                         <td>{{ \Carbon\Carbon::parse($reservation->updated_at)->format('y - m - d') }}</td>
                                         <td>{{ $reservation->address }}</td>
+                                        <td>
+                                            @if ($reservation->status == '1')
+                                                <span class="badge badge-success">مؤكد</span>
+                                            @else
+                                                <span class="badge badge-danger">غير مؤكد</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="form-button-action">
                                                 <a href="#"> <button type="button" data-bs-toggle="tooltip"
