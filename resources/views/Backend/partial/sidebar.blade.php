@@ -116,6 +116,22 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#articles">
+                        <i class="fas fa-layer-group"></i>
+                        <p>إدارة المقالات</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="articles">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('get.allarticles') }}">
+                                    <span class="sub-item">مقالاتي</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

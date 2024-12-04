@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EntryConttroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -67,6 +69,10 @@ Route::get('allstudent/reservation', [StudentController::class, 'get'])->name('g
 Route::post('studentcreate/reservation', [StudentController::class, 'Create'])->name('create.reservation');
 Route::post('studentupdate/reservation', [StudentController::class, 'Update'])->name('update.reservation');
 Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'])->name('delete.reservation');
+
+//Articles Routes.
+Route::get('all/articles',[BlogController::class,'getAllArticles'])->name('get.allarticles');
+Route::get('create/article',[BlogController::class,'CreateArticle'])->name('create.article');
 
 
 

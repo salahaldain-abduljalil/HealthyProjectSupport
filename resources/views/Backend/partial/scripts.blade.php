@@ -21,6 +21,8 @@
 
    <!-- Datatables -->
    <script src="{{ asset('assets') }}/js/plugin/datatables/datatables.min.js"></script>
+   {{-- tag input file --}}
+   <script src="{{ asset('assets') }}/js/taginput.js"></script>
 
    <!-- Bootstrap Notify -->
    {{-- <script src="{{ asset('assets') }}/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script> --}}
