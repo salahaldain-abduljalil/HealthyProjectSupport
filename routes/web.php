@@ -74,6 +74,11 @@ Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'
 Route::get('all/articles',[BlogController::class,'getAllArticles'])->name('get.allarticles');
 Route::get('create/article',[BlogController::class,'CreateArticle'])->name('create.article');
 Route::post('store/article',[BlogController::class,'StoreArticle'])->name('store.article');
+Route::get('edit/article{id}',[BlogController::class,'getArticletoEdit'])->name('edit.article');
+Route::get('delete/article{id}',[BlogController::class,'DeleteArticle'])->name('delete.article');
+Route::post('update/article',[BlogController::class,'updateArticle'])->name('update.article');
+
+Route::get('blog/details/{slug}',[BlogController::class, 'BlogDetails']);
 
 
 

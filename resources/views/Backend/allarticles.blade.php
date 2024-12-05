@@ -57,11 +57,11 @@
                                                 مرئية
                                             @endif
                                         </td>
-                                        <td>
-                                            <a href="{{ route('edit.article', $post->id) }}" class="btn btn-info px-5">Edit
+                                        <td class="text-center">
+                                            <a href="{{ route('edit.article', $post->id) }}" class="btn btn-info px-5">تعديل
                                             </a>
                                             <a href="{{ route('delete.article', $post->id) }}" class="btn btn-danger px-5"
-                                                id="delete">Delete </a>
+                                                id="delete">حذف </a>
                                         </td>
                                     </tr>
                                 @endforeach
