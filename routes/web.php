@@ -73,6 +73,7 @@ Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'
 //Articles Routes.
 Route::get('all/articles',[BlogController::class,'getAllArticles'])->name('get.allarticles');
 Route::get('create/article',[BlogController::class,'CreateArticle'])->name('create.article');
+Route::post('store/article',[BlogController::class,'StoreArticle'])->name('store.article');
 
 
 

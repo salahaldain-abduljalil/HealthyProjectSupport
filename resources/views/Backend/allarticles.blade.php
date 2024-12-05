@@ -29,7 +29,7 @@
                                 <tr>
                                     <th>N</th>
                                     <th class="text-center"> العنوان</th>
-                                    <th>الصورة</th>
+                                    <th class="text-center">الصورة</th>
                                     <th class="text-center"> الحالة</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
@@ -44,29 +44,27 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                {{-- @foreach ($users as $user)
+                                @foreach ($blogposts as $post)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->user_name }} {{ $user->name }}</td>
-                                        <td>{{ $user->phone }}</td>
-                                        <td>{{ $user->address }}</td>
+                                        <td>{{ $post->post_title }}</td>
+                                        <td class="text-center"> <img src="{{ asset($post->post_image) }}" alt=""
+                                                style="width: 70px; height:40px;"></td>
+                                        <td class="text-center">
+                                            @if ($post->status == '0')
+                                                مخفية
+                                            @else
+                                                مرئية
+                                            @endif
+                                        </td>
                                         <td>
-                                            <div class="form-button-action">
-                                                <a href="#"> <button type="button" data-bs-toggle="tooltip"
-                                                        title="" class="btn btn-link btn-primary btn-lg"
-                                                        data-original-title="تعديل الطبيب" data-toggle="modal"
-                                                        data-target="#exampleModalUpdate{{ $user->id }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button></a>
-                                                <a href="{{ route('delete.doctor', $user->id) }}" id="delete"> <button
-                                                        type="button" data-bs-toggle="tooltip" title=""
-                                                        class="btn btn-link btn-danger" data-original-title="حذف">
-                                                        <i class="fa fa-times"></i>
-                                                    </button></a>
-                                            </div>
+                                            <a href="{{ route('edit.article', $post->id) }}" class="btn btn-info px-5">Edit
+                                            </a>
+                                            <a href="{{ route('delete.article', $post->id) }}" class="btn btn-danger px-5"
+                                                id="delete">Delete </a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -75,4 +73,4 @@
             </div>
         </div>
         <!-- Modal -->
-@endsection
+    @endsection

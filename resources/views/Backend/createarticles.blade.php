@@ -26,12 +26,13 @@
             <div class="card">
                 <div class="card-body p-4">
                     <h5 class="mb-4">إضافة مقالة جديدة</h5>
-                    <form id="myForm" action="#" method="post" class="row g-3" enctype="multipart/form-data">
+                    <form id="myForm" action="{{ route('store.article') }}" method="post" class="row g-3" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">العنوان</label>
-                            <input type="text" name="post_title" placeholder="عنوان مختصر ومؤجز" class="form-control" id="input1">
+                            <input type="text" name="post_title" placeholder="عنوان مختصر ومؤجز" class="form-control"
+                                id="input1">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">إختار حالة المقال</label>
