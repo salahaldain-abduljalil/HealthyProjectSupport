@@ -48,9 +48,8 @@ class User extends Authenticatable
         ];
     }
 
-    // public function ispsychologist(){
+    public function comment(){
 
-    //     return $user->role == 'psychologist';
-
-    // }
+        return $this->hasMany(Comment::class,'comment_id','id');
+    }
 }

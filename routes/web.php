@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -79,6 +77,9 @@ Route::get('delete/article{id}',[BlogController::class,'DeleteArticle'])->name('
 Route::post('update/article',[BlogController::class,'updateArticle'])->name('update.article');
 
 Route::get('blog/details/{slug}',[BlogController::class, 'BlogDetails']);
+
+Route::post('comment/send-comments', [BlogController::class, 'sendComment'])->name('comment.send-comment');
+
 
 
 
