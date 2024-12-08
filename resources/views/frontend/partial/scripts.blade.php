@@ -75,7 +75,7 @@
         function sendTempMessageCard(comment, tempId, user_id, post_id) {
             return `
     <div class="d-flex mb-4 comment-card" data-id="${tempId}">
-       <img src="{{ Auth::user()->photo }}" class="img-fluid rounded-circle" style="width: 45px; height: 45px;">
+       <img src="{{ !empty(Auth::user()->photo) ? url('upload/instructor_images/' . Auth::user()->photo) : url('upload/no_image.jpg') }}" class="img-fluid rounded-circle" style="width: 45px; height: 45px;">
        <div class="ps-3">
              <div class="pre_loader">
                 <div class="spinner-border text-light" role="status">
@@ -87,7 +87,7 @@
 
     ${
     comment.length > 0 ? `<p>${comment}</p>
-                                                                                                                            ` : ""
+                                                                                                                                ` : ""
     }
       <h6><small><i>{{ \Carbon\Carbon::now() }}</i></small></h6>
     <button class="btn btn-sm btn-light" onclick="toggleElement();">رد</button>

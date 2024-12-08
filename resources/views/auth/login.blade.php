@@ -9,7 +9,6 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>صفحة تسجيل الدخول</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
 </head>
 
 <body>
@@ -21,25 +20,26 @@
                         <div class="card-body p-5 text-center">
 
                             <h3 class="mb-5">تسجيل الدخول</h3>
-                            <form method="POST" id="myForm" action="{{ route('login') }}" enctype="multipart/form-data">
+                            <form method="POST" id="myForm" action="{{ route('login') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div data-mdb-input-init class="form-group mb-4">
-                                    <input type="email" name="email" id="typeEmailX-2" placeholder="Enter Your Email"
-                                        class="form-control form-control-lg" required />
+                                    <input type="email" name="email" id="typeEmailX-2"
+                                        placeholder="Enter Your Email" class="form-control form-control-lg" required />
                                     <label class="form-label" for="typeEmailX-2">البريد الإلكتروني</label>
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                 </div>
 
                                 <div data-mdb-input-init class="form-group mb-4">
-                                    <input type="password" name="password" id="typePasswordX-2" placeholder="Enter Your password"
-                                        class="form-control form-control-lg" required />
+                                    <input type="password" name="password" id="typePasswordX-2"
+                                        placeholder="Enter Your password" class="form-control form-control-lg"
+                                        required />
                                     <label class="form-label" for="typePasswordX-2">كلمة السر</label>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
-                                <div  class="form-outline mb-4">
-
-
-                                    <select id="role" name="role" class="form-control form-control-lg form-group">
+                                <div class="form-outline mb-4">
+                                    <select id="role" name="role"
+                                        class="form-control form-control-lg form-group">
                                         <option selected="" disabled>إختار</option>
                                         <option value="admin">مدير الموقع</option>
                                         <option value="student">طالب</option>
@@ -47,13 +47,13 @@
                                         <option value="faculty_member">عضو هيئة تدريس</option>
                                     </select>
                                     <label class="form-label" for="role"> إختار الدور</label>
-                                    <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('role')" class="mt-2"/>
                                 </div>
                                 <!-- Checkbox -->
                                 @if (Route::has('password.request'))
                                     <div class="form-check d-flex justify-content-start mb-4">
                                         <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                                            href="{{ route('password.request') }}"> هل نسيت كلمة المرور؟
+                                            href="#"> هل نسيت كلمة المرور؟
                                         </a>
                                     </div>
                                 @endif

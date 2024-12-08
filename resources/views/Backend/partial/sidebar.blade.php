@@ -36,86 +36,94 @@
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
-                        <i class="fas fa-layer-group"></i>
-                        <p>الأسئلة</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="base">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('create.survey') }}">
-                                    <span class="sub-item">كل الأسئلة</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#doctors">
-                        <i class="fas fa-layer-group"></i>
-                        <p>الأطباء</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="doctors">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('all.doctors') }}">
-                                    <span class="sub-item"> كل الأطباء</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#appointments">
-                        <i class="fas fa-layer-group"></i>
-                        <p>المواعيد</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="appointments">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('get.appointments') }}">
-                                    <span class="sub-item"> كل المواعيد المتوفرة</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#reservations">
-                        <i class="fas fa-layer-group"></i>
-                        <p>جميع حجوزات الطالب</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="reservations">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('get.reservations') }}">
-                                    <span class="sub-item"> كل حجوزاتك </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#reservationsappointment">
-                        <i class="fas fa-layer-group"></i>
-                        <p>جميع المواعيد المحجوزة</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="reservationsappointment">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="{{ route('get.reservationsappointment') }}">
-                                    <span class="sub-item"> كل مواعيدك المحجوزة </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @can('admin-user')
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>الأسئلة</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('create.survey') }}">
+                                        <span class="sub-item">كل الأسئلة</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#doctors">
+                            <i class="fas fa-layer-group"></i>
+                            <p>الأطباء</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="doctors">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('all.doctors') }}">
+                                        <span class="sub-item"> كل الأطباء</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+                @can('doctor-user')
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#appointments">
+                            <i class="fas fa-layer-group"></i>
+                            <p>المواعيد</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="appointments">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('get.appointments') }}">
+                                        <span class="sub-item"> كل المواعيد المتوفرة</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#reservationsappointment">
+                            <i class="fas fa-layer-group"></i>
+                            <p>جميع المواعيد المحجوزة</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="reservationsappointment">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('get.reservationsappointment') }}">
+                                        <span class="sub-item"> كل مواعيدك المحجوزة </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
+                @can('student-user')
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#reservations">
+                            <i class="fas fa-layer-group"></i>
+                            <p>جميع حجوزات الطالب</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="reservations">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="{{ route('get.reservations') }}">
+                                        <span class="sub-item"> كل حجوزاتك </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#articles">
                         <i class="fas fa-layer-group"></i>
