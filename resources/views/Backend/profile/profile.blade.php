@@ -5,9 +5,12 @@
         <section style="direction: rtl;">
 
             <br>
-            <div class="row">
-                <div class="col-lg-7 m-sm-1">
-                    <div class="card bg-secondary">
+            <div class="row m-auto">
+                <div class="col-lg-12">
+                    <div class="card bg-info">
+                        <div class="text-center">
+                            <h6 style="  font-size: 25px;">يمكنك تعديل بياناتك الشخصية من هنا</h6>
+                        </div>
 
                         <form method="POST" action="#" enctype="multipart/form-data">
                             @csrf
@@ -18,7 +21,7 @@
                                         <h6 class="mb-0">الإسم</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="name" class="form-control"
+                                        <input type="text" name="name" placeholder="إسمك الأول" class="form-control"
                                             value="{{ $profileData->name }}" />
                                     </div>
                                 </div>
@@ -27,8 +30,8 @@
                                         <h6 class="mb-0">إسم المستحدم</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="username" class="form-control"
-                                            value="{{ $profileData->user_name }}" />
+                                        <input type="text" name="username" placeholder="أدخل إسمك الأخر"
+                                            class="form-control" value="{{ $profileData->user_name }}" />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -90,70 +93,10 @@
 
                         </form>
                     </div>
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="w3-white w3-text-grey w3-card-4">
-                        <div class="w3-display-container">
-                            <img src="{{ !empty(Auth::user()->photo) ? url('upload/images/' . Auth::user()->photo) : url('upload/no_image.jpg') }}"
-                                style="width:100%" alt="Avatar">
-                            <div class="w3-display-bottomleft w3-container w3-text-black">
-                                <h2>{{ Auth::user()->name }}</h2>
-                            </div>
+                    <div class="card bg-info">
+                        <div class="text-center">
+                            <h6 style="  font-size: 25px;">يمكنك تعديل كلمة المرور الخاصة بك من هنا</h6>
                         </div>
-                        <div class="w3-container">
-                            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-                            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
-                            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com
-                            </p>
-                            <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
-                            <hr>
-
-                            <p class="w3-large"><b><i
-                                        class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-                            <p>Adobe Photoshop</p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
-                                </div>
-                            </div>
-                            <p>Photography</p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-                                    <div class="w3-center w3-text-white">80%</div>
-                                </div>
-                            </div>
-                            <p>Illustrator</p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%
-                                </div>
-                            </div>
-                            <p>Media</p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%
-                                </div>
-                            </div>
-                            <br>
-
-                            <p class="w3-large w3-text-theme"><b><i
-                                        class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-                            <p>English</p>
-                            <div class="w3-light-grey w3-round-xlarge">
-                                <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
-                            </div>
-                            <p>Spanish</p>
-                            <div class="w3-light-grey w3-round-xlarge">
-                                <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
-                            </div>
-                            <p>German</p>
-                            <div class="w3-light-grey w3-round-xlarge">
-                                <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
-                            </div>
-                            <br>
-                        </div>
-                    </div><br>
-                </div>
-                <div class="col-lg-7">
-                    <div class="card bg-secondary">
 
                         <form method="POST" action="#" enctype="multipart/form-data">
                             @csrf
@@ -206,11 +149,14 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
+
+
             </div>
 
             <!-- Page Container -->
-            <div class="w3-content w3-margin-top" style="max-width: 1400px;">
+            {{-- <div class="w3-content w3-margin-top" style="max-width: 1400px;">
 
                 <!-- The Grid -->
                 <div class="w3-row-padding">
@@ -296,7 +242,67 @@
 
                 <!-- End Page Container -->
             </div>
-            <br><br>
+            <br><br> --}}
+            <div class="col-lg-4">
+                <div class="w3-white w3-text-grey w3-card-4">
+                    <div class="w3-display-container">
+                        <img src="{{ !empty(Auth::user()->photo) ? url('upload/images/' . Auth::user()->photo) : url('upload/no_image.jpg') }}"
+                            style="width:100%" alt="Avatar">
+                        <div class="w3-display-bottomleft w3-container w3-text-black">
+                            <h2>{{ Auth::user()->name }}</h2>
+                        </div>
+                    </div>
+                    <div class="w3-container">
+                        <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
+                        <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com
+                        </p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
+                        <hr>
+
+                        <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b>
+                        </p>
+                        <p>Adobe Photoshop</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%
+                            </div>
+                        </div>
+                        <p>Photography</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+                                <div class="w3-center w3-text-white">80%</div>
+                            </div>
+                        </div>
+                        <p>Illustrator</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%
+                            </div>
+                        </div>
+                        <p>Media</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%
+                            </div>
+                        </div>
+                        <br>
+
+                        <p class="w3-large w3-text-theme"><b><i
+                                    class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+                        <p>English</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+                        </div>
+                        <p>Spanish</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
+                        </div>
+                        <p>German</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
+                        </div>
+                        <br>
+                    </div>
+                </div><br>
+            </div>
         </section>
     </div>
 

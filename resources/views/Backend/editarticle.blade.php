@@ -39,8 +39,8 @@
                         <div class="form-group col-md-6">
                             <label for="input1" class="form-label">إختار حالة المقال</label>
                             <select name="status" class="form-select mb-3" aria-label="Default select example">
-                                <option value="0" {{ $blogposts->status == '0' ?  'selected' : '' }}>مخفية</option>
-                                <option value="1" {{ $blogposts->status == '1' ?  'selected' : '' }}>مرئية</option>
+                                <option value="0" {{ $blogposts->status == '0' ? 'selected' : '' }}>مخفية</option>
+                                <option value="1" {{ $blogposts->status == '1' ? 'selected' : '' }}>مرئية</option>
 
                             </select>
                         </div>

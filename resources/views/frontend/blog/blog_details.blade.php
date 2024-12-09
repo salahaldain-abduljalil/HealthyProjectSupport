@@ -64,21 +64,21 @@
                         @endphp
                         <div class="d-flex align-items-center">
                             <span class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</span>
-                            <span class="ms-3"><i class="far fa-comment text-primary me-1"></i>
+                            <span class="ms-3" id="comments-count"><i class="far fa-comment text-primary me-1"></i>
                                 {{ count($comments) }}</span>
                         </div>
                     </div>
                 </div>
                 <!-- Blog Detail End -->
 
-                
+
                 <!-- Comment List Start -->
                 <div class="mb-5" style="direction: rtl;">
                     <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">
                         {{ count($comments) }} تعليقات</h4>
                     @foreach ($comments as $key => $item)
                         <div class="d-flex mb-4">
-                            <img src="{{ !empty($item->user->photo) ? url('upload/instructor_images/' . $item->user->photo) : url('upload/no_image.jpg') }}"
+                            <img src="{{ !empty($item->user->photo) ? url('images/' . $item->user->photo) : url('upload/no_image.jpg') }}"
                                 class="img-fluid rounded-circle" style="width: 45px; height: 45px;">
                             <div class="ps-3">
                                 <h6><a href="">{{ $item->user->name }}</a>
@@ -117,9 +117,12 @@
                         <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-white mb-4">
                             إنشاء تعليق</h4>
                         {{-- here start form --}}
-                        <form class="comment-form" enctype="multipart/form-data">
+                        <form class="comment-form" action="#" enctype="multipart/form-data">
                             <input type="hidden" name="post_id" id="post_id" value="{{ $blog->id }}">
                             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+                            {{-- <input type="hidden" name="photo" id="photo" value="{{ Auth::user()->photo }}"> --}}
+                            {{-- <img src="{{ !empty(Auth::user()->photo) ? url('upload/instructor_images/' . Auth::user()->photo) : url('upload/no_image.jpg') }}"
+                                alt="" id="photo"> --}}
                             <div class="row g-3">
                                 <div class="col-12">
                                     <textarea class="form-control bg-white border-0 comment-input" name="long_descp" rows="5"
@@ -213,7 +216,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     @include('frontend.partial.scripts')
 

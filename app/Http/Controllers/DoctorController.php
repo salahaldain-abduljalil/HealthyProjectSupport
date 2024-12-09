@@ -146,7 +146,7 @@ class DoctorController extends Controller {
             'alert-type' => 'success'
         );
 
-        return redirect()->route( 'get.reservationsappointment' )->with( $notification );
+        return redirect()->back()->with( $notification );
 
     }
 
@@ -159,6 +159,6 @@ class DoctorController extends Controller {
             'alert-type' => 'success'
         );
 
-        return redirect()->route( 'get.reservationsappointment' )->with( $notification );
+        return redirect()->back()->with( $notification );
     }
 }

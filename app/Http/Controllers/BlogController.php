@@ -154,9 +154,12 @@ class BlogController extends Controller
         $comments->long_descp = $request->long_descp;
         $comments->save();
 
+        $posts = Comment::with('posts')->where('post_id',$request->post_id)->count();
+
         return response()->json([
             'comment' => $this->commentCard($comments),
-            'tempID' => $request->temporaryMsgId
+            'tempID' => $request->temporaryMsgId,
+            'totalcomment' => $posts,
         ]);
     }
 
@@ -164,5 +167,6 @@ class BlogController extends Controller
     {
         return view('frontend.blog.comment_card', compact('comments'))->render();
     }
+
 
 }

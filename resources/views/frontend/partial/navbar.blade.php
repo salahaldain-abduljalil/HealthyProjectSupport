@@ -10,7 +10,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="{{ route('login') }}" class="nav-item nav-link active">تسجيل الدخول</a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="nav-item nav-link active">لوحة التحكم</a>
+                    @else
+                        <a href="{{ route('login') }}" class="nav-item nav-link active">تسجيل الدخول</a>
+
+                    @endauth
                 </div>
             </div>
         </nav>

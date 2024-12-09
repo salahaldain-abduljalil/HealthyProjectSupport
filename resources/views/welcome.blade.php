@@ -35,7 +35,7 @@
                 <div class="col-lg-8 text-center text-lg-start">
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5"
                         style="border-color: rgba(256, 256, 256, .3) !important;">موقع الرعاية النفسية</h5>
-                    <h1 class="display-1 text-white mb-md-4">أفضل حلول الرعاية الصحية في جامعتك</h1>
+                    <h1 class="display-1 text-dark mb-md-4">أفضل حلول الرعاية الصحية في جامعتك</h1>
                 </div>
             </div>
         </div>
@@ -248,58 +248,6 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    <h2>التعليقات</h2>
-    <form id="commentForm">
-        <input type="text" id="commentInput" placeholder="أدخل تعليقك هنا" required>
-        <button type="submit">إضافة تعليق</button>
-    </form>
-    <ul id="commentsList"></ul>
-
-    <script>
-        let commentId = 0;
-
-        document.getElementById('commentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const commentInput = document.getElementById('commentInput').value;
-            addComment(commentInput);
-            this.reset();
-        });
-
-        function addComment(comment, parentId = null) {
-            commentId++;
-            const commentsList = document.getElementById('commentsList');
-            const li = document.createElement('li');
-            li.id = `comment-${commentId}`;
-            li.textContent = `${commentId}: ${comment} `;
-
-            const replyButton = document.createElement('span');
-            replyButton.textContent = 'رد';
-            replyButton.className = 'reply-button';
-            replyButton.onclick = () => toggleReplyForm(commentId);
-            li.appendChild(replyButton);
-
-            const replyForm = document.createElement('form');
-            replyForm.className = 'reply-form';
-            replyForm.innerHTML = `
-                <input type="text" placeholder="أدخل ردك هنا" required>
-                <button type="submit">إضافة رد</button>
-            `;
-            replyForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const replyInput = this.querySelector('input');
-                addComment(replyInput.value, commentId);
-                replyInput.value = ''; // مسح حقل الرد
-            });
-            li.appendChild(replyForm);
-            commentsList.appendChild(li);
-        }
-
-        function toggleReplyForm(commentId) {
-            const replyForm = document.querySelector(`#comment-${commentId} .reply-form`);
-            replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 
 
     @include('frontend.partial.scripts')

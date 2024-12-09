@@ -52,6 +52,12 @@
              <header class="text-center">
                  <h1 id="title">نموذج الإستبيان</h1>
                  <p id="description">يرجى مل هذه الإستمارة قبل الدخول إلى الموقع</p>
+
+                 @if (Session::has('Error'))
+                     <div class="alert alert-danger text-center">
+                         <p>{{ Session::get('Error') }}</p>
+                     </div>
+                 @endif
              </header>
              <form id="myForm" action="{{ route('store.entry') }}" method="POST" class="border rounded-bottom"
                  enctype="multipart/form-data">
