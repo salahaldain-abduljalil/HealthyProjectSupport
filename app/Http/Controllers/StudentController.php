@@ -82,4 +82,10 @@ class StudentController extends Controller
 
         return redirect()->route('get.reservations')->with($notification);
     }
+
+    public function getAllEmergency(){
+
+
+        return view('student.allreservationemergency');
+    }
 }

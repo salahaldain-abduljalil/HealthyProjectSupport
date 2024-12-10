@@ -12,7 +12,6 @@
 <script href="{{ asset('frontend') }}/js/main.js"></script>
 
 
-
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -33,7 +32,8 @@
         const post_id = $('#post_id').val();
         const user_id = $('#user_id').val();
         const photo = $('#photo').val();
-        const commentscount = $('#comments-count').val();
+        var commentscount = $('#comments-count');
+        var commentscounts = $('#comments-counts');
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         if (inputValue.length > 0) {
@@ -67,6 +67,8 @@
                     );
                     tempMsgCardElement.before(data.comment);
                     tempMsgCardElement.remove();
+                    commentscount.text(data.totalcomment);
+                    commentscounts.text(data.totalcomment);
                 },
                 error: function(xhr, status, error) {
                     console.log(error);

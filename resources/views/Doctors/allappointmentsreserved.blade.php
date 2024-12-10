@@ -124,15 +124,14 @@
                                                         <td></td>
                                                         @if ($reserved->status == '1')
                                                             <td class="text-center"> <a
-                                                                    href="{{ route('cancel.reservationsappointment', $reserved->id) }}"><button
-                                                                        class="btn btn-block btn-danger" id="delete">حذف
+                                                                    href="{{ route('cancel.booking', $reserved->id) }}"><button
+                                                                        class="btn btn-block btn-danger">حذف
                                                                         الحجز
                                                                     </button></a></td>
                                                         @else
                                                             <td class="text-center"><a
-                                                                    href="{{ route('confirm.reservationsappointment', $reserved->id) }}"><button
-                                                                        class="btn btn-block btn-success"
-                                                                        id="confirm">تأكيد
+                                                                    href="{{ route('confirm.booking', $reserved->id) }}"><button
+                                                                        class="btn btn-block btn-success">تأكيد
                                                                         الحجز</button></a></td>
                                                         @endif
 

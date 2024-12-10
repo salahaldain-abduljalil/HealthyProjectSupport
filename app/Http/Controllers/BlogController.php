@@ -154,7 +154,7 @@ class BlogController extends Controller
         $comments->long_descp = $request->long_descp;
         $comments->save();
 
-        $posts = Comment::with('posts')->where('post_id',$request->post_id)->count();
+        $posts = Comment::where('post_id',$request->post_id)->count();
 
         return response()->json([
             'comment' => $this->commentCard($comments),

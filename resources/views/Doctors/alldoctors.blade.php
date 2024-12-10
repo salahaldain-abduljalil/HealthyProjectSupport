@@ -189,9 +189,9 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="input1" class="form-label">كلمة المرور</label>
-                                        <input type="password" name="password" value="{{ $user->password }}"
-                                            class="form-control" id="input1">
+                                        <label for="password" class="form-label">كلمة المرور</label>
+                                        <input type="password" name="password" placeholder="create New password"
+                                            class="form-control" id="password">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

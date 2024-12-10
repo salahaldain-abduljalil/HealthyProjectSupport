@@ -228,9 +228,13 @@
                                         <small>لايمكنك رؤية إسم صاحب المقال</small>
                                     @endif
                                 </div>
+                                @php
+                                    $comments = \App\Models\Comment::where('post_id', $post->id)->get();
+                                @endphp
                                 <div class="d-flex align-items-center">
                                     <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                    <small class="ms-3"><i
+                                            class="far fa-comment text-primary me-1"></i>{{ count($comments) }}</small>
                                 </div>
                             </div>
                         </div>
@@ -240,9 +244,6 @@
         </div>
     </div>
     <!-- Blog End -->
-
-
-
     <!-- Footer Start -->
     @include('frontend.partial.footer')
     <!-- Footer End -->

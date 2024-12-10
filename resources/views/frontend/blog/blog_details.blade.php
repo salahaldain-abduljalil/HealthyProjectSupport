@@ -71,11 +71,11 @@
                 </div>
                 <!-- Blog Detail End -->
 
-
                 <!-- Comment List Start -->
                 <div class="mb-5" style="direction: rtl;">
                     <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">
-                        {{ count($comments) }} تعليقات</h4>
+                        <span id="comments-counts">{{ count($comments) }}</span> تعليقات
+                    </h4>
                     @foreach ($comments as $key => $item)
                         <div class="d-flex mb-4">
                             <img src="{{ !empty($item->user->photo) ? url('images/' . $item->user->photo) : url('upload/no_image.jpg') }}"

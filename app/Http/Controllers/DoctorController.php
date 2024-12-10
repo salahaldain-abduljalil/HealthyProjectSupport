@@ -38,16 +38,17 @@ class DoctorController extends Controller {
 
     public function updateDoctor( Request $request ) {
 
-        User::whereId( $request->id )->update( [
-            'id'      => $request->id,
+        User::whereId( $request->id )->update([
+            'id'       => $request->id,
             'user_name' => $request->user_name,
-            'name'  => $request->name,
-            'password' =>   Hash::make( $request->password ),
-            'phone'    => $request->phone,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
             'address' => $request->address,
-            'role'   => 'psychologist',
-            'status' => '1'
-        ] );
+            'password' => Hash::make( $request->password ),
+            'role' => 'psychologist',
+            'status' => '1',
+        ]);
 
         $notification = array(
             'message' => 'تم تعديل الطبيب بنجاح',
@@ -139,15 +140,14 @@ class DoctorController extends Controller {
 
     public function ConfirmreservedAppointment( $reserv_id ) {
 
-        Sudentreservation::find( $reserv_id )->update( [ 'status' => '1' ] );
+        Sudentreservation::where( 'id', $reserv_id )->update( [ 'status' => '1' ] );
 
         $notification = array(
             'message' => 'تم تأكيد الحجز بنجاح',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with( $notification );
-
+        return redirect()->route( 'get.reservationsappointment' )->with( $notification );
     }
 
     public function CancelreservedAppointment( $cancel_id ) {
@@ -159,6 +159,6 @@ class DoctorController extends Controller {
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with( $notification );
+        return redirect()->route( 'get.reservationsappointment' )->with( $notification );
     }
 }

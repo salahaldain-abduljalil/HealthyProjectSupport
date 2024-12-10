@@ -1,4 +1,3 @@
-
 <!-- Sidebar -->
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
@@ -126,6 +125,23 @@
                         </div>
                     </li>
                 @endcan
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#emergency">
+                        <i class="fas fa-layer-group"></i>
+                        <p>حالات الطوارئ</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="emergency">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('get.reservationsemergency') }}">
+                                    <span class="sub-item"> إنشاء طلب حالة طوارئ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#articles">
                         <i class="fas fa-layer-group"></i>

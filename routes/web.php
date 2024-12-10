@@ -57,13 +57,14 @@ Route::get('delete/appointment/{id}', [DoctorController::class, 'Delete'])->name
 Route::get('getdoctor/data/{id}', [DoctorController::class, 'getdoctorData']);
 
 Route::get('allstudent/reservationsappointment', [DoctorController::class, 'AllreservedAppointment'])->name('get.reservationsappointment');
-Route::get('confirm/reservationappointment/{id}', [DoctorController::class, 'ConfirmreservedAppointment'])->name('confirm.reservationsappointment');
-Route::get('cancel/reservationappointment/{id}', [DoctorController::class, 'CancelreservedAppointment'])->name('cancel.reservationsappointment');
+Route::get('confirm/booking/{id}', [DoctorController::class, 'ConfirmreservedAppointment'])->name('confirm.booking');
+Route::get('cancel/booking/{id}', [DoctorController::class, 'CancelreservedAppointment'])->name('cancel.booking');
 
 
 //Reservation student Routes.
 
 Route::get('allstudent/reservation', [StudentController::class, 'get'])->name('get.reservations');
+Route::get('allstudent/reservationemergency', [StudentController::class, 'getAllEmergency'])->name('get.reservationsemergency');
 Route::post('studentcreate/reservation', [StudentController::class, 'Create'])->name('create.reservation');
 Route::post('studentupdate/reservation', [StudentController::class, 'Update'])->name('update.reservation');
 Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'])->name('delete.reservation');
@@ -79,8 +80,6 @@ Route::post('update/article',[BlogController::class,'updateArticle'])->name('upd
 Route::get('blog/details/{slug}',[BlogController::class, 'BlogDetails']);
 
 Route::post('comment/send-comments', [BlogController::class, 'sendComment'])->name('comment.send-comment');
-
-
 
 
 require __DIR__ . '/auth.php';
