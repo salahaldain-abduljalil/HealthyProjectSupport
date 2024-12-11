@@ -94,6 +94,28 @@
                });
            });
        });
+       $(function() {
+           $(document).on("submit", "#send", function(e) {
+               e.preventDefault();
+               Swal.fire({
+                   title: 'سيكون لديك ثلاثة فرص فقط بالشهر للحجز؟',
+                   text: 'هل أنت موافق على الحجز الأن؟',
+                   icon: 'warning',
+                   showCancelButton: true,
+                   confirmButtonText: 'نعم، تأكيد!',
+                   cancelButtonText: 'لا',
+                   customClass: {
+                       confirmButton: 'confirm-button-class',
+                       cancelButton: 'cancel-button-class'
+                   }
+               }).then((result) => {
+                   if (result.isConfirmed) {
+                       this.submit(); 
+                       Swal.fire("التأكيد!", ".تم تأكيد الحجز بنجاح", "success");
+                   }
+               });
+           });
+       });
    </script>
 
    <script>
@@ -157,7 +179,11 @@
 
    <!-- Initialize Quill editor -->
    <script>
-       const quill = new Quill('#editor', {
-           theme: 'snow'
-       });
+       var Editors = ['#editor', '#emergencyE', '#article', '#editarticle'];
+       var quill;
+       for (var k = 0; k <= Editors.length; k++) {
+           quill = new Quill(Editors[k], {
+               theme: 'snow'
+           });
+       }
    </script>

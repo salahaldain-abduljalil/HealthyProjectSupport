@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('emergency_reservations', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('doctor_id');
             $table->string('name');
             $table->string('user_name');
             $table->string('email');
             $table->string('address');
             $table->string('phone');
-            $table->string('doctor_name');
-            $table->tinyText('doctor_date');
             $table->Text('description');
             $table->enum('status',['0','1'])->default('0');
             $table->timestamps();

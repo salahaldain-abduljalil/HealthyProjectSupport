@@ -65,6 +65,8 @@ Route::get('cancel/booking/{id}', [DoctorController::class, 'CancelreservedAppoi
 
 Route::get('allstudent/reservation', [StudentController::class, 'get'])->name('get.reservations');
 Route::get('allstudent/reservationemergency', [StudentController::class, 'getAllEmergency'])->name('get.reservationsemergency');
+Route::post('create/emergencystatus', [StudentController::class, 'CreateEmergency'])->name('create.reservationemergency');
+Route::get('delete/emergencystatus/{id}', [StudentController::class, 'Deletemergency'])->name('delete.reservationemergency');
 Route::post('studentcreate/reservation', [StudentController::class, 'Create'])->name('create.reservation');
 Route::post('studentupdate/reservation', [StudentController::class, 'Update'])->name('update.reservation');
 Route::get('studentdelete/reservation/{id}', [StudentController::class, 'Delete'])->name('delete.reservation');

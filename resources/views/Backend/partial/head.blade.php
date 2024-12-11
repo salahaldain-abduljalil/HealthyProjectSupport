@@ -63,13 +63,20 @@
         h6 {
             font-family: "Times New Roman", Arial, sans-serif;
         }
+
         .custom-margin {
             margin-left: 200px;
+        }
+
+        .confirm-button-class {
+            background-color: #7aaf4c;
+            color: Black;
+        }
+
+        .cancel-button-class {
+            background-color: red;
+            color: Black;
         }
     </style>
 
 </head>
-
-
-
-

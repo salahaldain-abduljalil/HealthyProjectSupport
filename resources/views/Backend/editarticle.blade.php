@@ -45,8 +45,8 @@
                             </select>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">المقالة</label>
-                            <textarea id="editor" name="long_descp" placeholder="إكتب مقالنك هنا" class="form-control">{!! $blogposts->long_descp !!}</textarea>
+                            <label for="editarticle" class="form-label">المقالة</label>
+                            <textarea id="editarticle" name="long_descp" placeholder="إكتب مقالنك هنا" class="form-control">{!! $blogposts->long_descp !!}</textarea>
                         </div>
 
                         <div class="form-group col-md-12">

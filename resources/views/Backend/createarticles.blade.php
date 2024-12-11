@@ -26,7 +26,8 @@
             <div class="card">
                 <div class="card-body p-4">
                     <h5 class="mb-4">إضافة مقالة جديدة</h5>
-                    <form id="myForm" action="{{ route('store.article') }}" method="post" class="row g-3" enctype="multipart/form-data">
+                    <form id="myForm" action="{{ route('store.article') }}" method="post" class="row g-3"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="form-group col-md-6">
@@ -44,8 +45,8 @@
                             </select>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="input1" class="form-label">المقالة</label>
-                            <textarea id="editor" name="long_descp" placeholder="إكتب مقالنك هنا" class="form-control"></textarea>
+                            <label for="article" class="form-label">المقالة</label>
+                            <textarea id="article" name="long_descp" placeholder="إكتب مقالنك هنا" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group col-md-12">

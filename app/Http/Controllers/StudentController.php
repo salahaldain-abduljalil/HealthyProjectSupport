@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmergencyReservations;
 use App\Models\Sudentreservation;
 use App\Models\User;
 use Carbon\Carbon;
@@ -85,7 +86,38 @@ class StudentController extends Controller
 
     public function getAllEmergency(){
 
+       $allreservationsEmergency = EmergencyReservations::where('user_id',Auth::user()->id)->get();
+        return view('student.allreservationemergency',compact('allreservationsEmergency'));
+    }
 
-        return view('student.allreservationemergency');
+    public function CreateEmergency(Request $request){
+
+        EmergencyReservations::create([
+            'name' => $request->name,
+            'email'  => $request->email,
+            'address'  => $request->address,
+            'phone'   => $request->phone,
+            'user_id'      => $request->user_id,
+            'user_name'      => $request->user_name,
+            'description'      => $request->description,
+        ]);
+        $notification = array(
+            'message' => 'تم إنشاء حجزك بنجاح ',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('get.reservationsemergency')->with($notification);
+
+    }
+
+    public function Deletemergency($id){
+
+        EmergencyReservations::where('id',$id)->delete();
+        $notification = array(
+            'message' => 'تم حذف الحجز بنجاح ',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('get.reservationsemergency')->with($notification);
     }
 }
